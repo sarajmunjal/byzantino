@@ -16,6 +16,7 @@ class Client(process):
     def setup(client_id, olympus, request_id, client_timeout, operations, num_failures):
         self.name = 'Client ' + str(client_id)
         self.replicas = None
+        self.replicas_dict = None
         self.head = None
         self.replica_public_keys = None
         self.olympus_public_key = None
@@ -25,8 +26,11 @@ class Client(process):
         self.client_running_state_sync = dict()
 
     # Receive configuration message from Olympus: references to all replicas and head
-    def receive(msg=('Configuration', replicas_, head_), from_=olympus):
-        replicas = replicas_
+    def receive(msg=('Configuration', replicas_dict_, head_), from_=olympus):
+        self.replicas_dict = replicas_dict_
+        self.replicas = list()
+        for i, replica in replicas_dict_.items():
+            self.replicas.append(replica)
         head = head_
         output_wrapper(name + ' is configured.')
         send(('ACK', name), to=olympus)
@@ -75,7 +79,7 @@ class Client(process):
     def run():
         if replicas is None:
             send(('Get_configuration', self, name, client_id, public_key), to=olympus)
-            await(received(('Configuration', replicas, head)))
+            await(received(('Configuration', replicas_dict, head)))
         for op in operations:
             update_client_running_state(client_running_state, op[0], op[1])
             retry = 0
@@ -127,7 +131,8 @@ class Client(process):
     def send_request(type, args, retry):
         args = private_key.sign(str(args).encode('utf-8'))  # sign the request
         if retry:
-            send((None, 'Request', type, self, self, request_id, client_id, args), to=replicas)
+            for r in replicas:
+                send((None, 'Request', type, self, self, request_id, client_id, args), to=r)
         else:
             request_id += 1
             send((None, 'Request', type, self, self, request_id, client_id, args), to=head)

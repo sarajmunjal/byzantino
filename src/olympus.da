@@ -15,7 +15,7 @@ import read_config
 class Olympus(process):
     # Olympus setup method. It receives config information, and passes it to applicable replicas
     def setup(name, num_replicas, all_replica_conf_failures, head_timeout, replica_timeout):
-        self.replicas = list()
+        self.replicas = dict()
         self.replica_private_keys = list()
         self.replica_public_keys = list()
         self.head = None
@@ -32,16 +32,16 @@ class Olympus(process):
             replica_failures = all_replica_failures.get(i, {})
             if i == 0:
                 # create head replica
-                replica = new(replica_module.Replica, args=(i, 'Head', replica_failures, head_timeout, public_key))
+                replica = new(replica_module.Replica, args=(i, 'Head', replica_failures, head_timeout, public_key), at='Node2')
                 self.head = replica
             elif i == num_replicas - 1:
                 # create tail replica
-                replica = new(replica_module.Replica, args=(i, 'Tail', replica_failures, replica_timeout, public_key))
+                replica = new(replica_module.Replica, args=(i, 'Tail', replica_failures, replica_timeout, public_key), at='Node2')
                 self.tail = replica
             else:
                 # create other replica
-                replica = new(replica_module.Replica, args=(i, 'Replica ' + str(i), replica_failures, replica_timeout, public_key))
-            self.replicas.append(replica)
+                replica = new(replica_module.Replica, args=(i, 'Replica ' + str(i), replica_failures, replica_timeout, public_key), at='Node2')
+            self.replicas[i] = replica
             replica_name = 'Replica ' + str(i)
             output_wrapper('Olympus created replica process: {}'.format(replica_name))
             signing_key = SigningKey.generate()
@@ -89,11 +89,11 @@ class Olympus(process):
     # Run loop. Won't exit till Shutdown is received (never).
     # Start replicas and send them initial configuration message
     def run():
-        start(replicas)
-        sign_and_send(('Configuration', self, replicas, head, tail, [replica_public_keys, configuration_number]),
-                      replicas)
-        for i in range(len(replicas)):
-            send(('Key', replica_private_keys[i]), to=replicas[i])
+        for i, r in replicas.items():
+            start(r)
+            sign_and_send(('Configuration', self, replicas, head, tail, [replica_public_keys, configuration_number]), r)
+            send(('Key', replica_private_keys[i]), to=r)
+
         await(received(('ACK', None)))
         await(received(('Shutdown')))
 

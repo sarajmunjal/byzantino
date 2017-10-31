@@ -138,3 +138,592 @@ Test case passed! Actual and expected running states match.
 [2017-10-31 01:30:30,568] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.568128] No reconfiguration mechanism implemented yet.
 [2017-10-31 01:30:30,568] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.5685902] Reconfiguration request received from Replica 1.
 [2017-10-31 01:30:30,568] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.5689018] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:32:42,751] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:32:42,751] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:32:42,752] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:32:42,752] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:32:42,752] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:32:42,753] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509427962.753514] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:32:42,790] olympus.Olympus<Olympus:4b002#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:33:03,809] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:39654)>.
+[2017-10-31 01:33:03,810] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=39654, TcpTransport=15702).
+[2017-10-31 01:33:03,810] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:33:03,810] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:33:03,811] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:33:03,846] replica.Replica<Replica:e3802#Node2>:OUTPUT: [Head][TS: 1509427983.846539] replica failures: {}
+[2017-10-31 01:33:03,848] olympus.Olympus<Olympus:4b002#Node1>:OUTPUT: [Olympus][TS: 1509427983.848744] Olympus created replica process: Replica 0
+[2017-10-31 01:33:03,849] olympus.Olympus<Olympus:4b002#Node1>:OUTPUT: [Olympus][TS: 1509427983.849546] Olympus created keys for replica process: Replica 0. Public key: b'9f2d6b91f4fd9e7a0ac513507212b17f73661d0cd49e4c1684060104882f06c3'
+[2017-10-31 01:33:03,868] replica.Replica<Replica:e3803#Node2>:OUTPUT: [Replica 1][TS: 1509427983.8685162] replica failures: {}
+[2017-10-31 01:33:03,869] olympus.Olympus<Olympus:4b002#Node1>:OUTPUT: [Olympus][TS: 1509427983.869688] Olympus created replica process: Replica 1
+[2017-10-31 01:33:03,870] olympus.Olympus<Olympus:4b002#Node1>:OUTPUT: [Olympus][TS: 1509427983.870219] Olympus created keys for replica process: Replica 1. Public key: b'3e3b8efe57ed876c8b77edd146aec241c7721b25670d21e850ec5a1a17a009ef'
+[2017-10-31 01:33:03,888] replica.Replica<Replica:e3804#Node2>:OUTPUT: [Tail][TS: 1509427983.8884952] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:33:03,889] olympus.Olympus<Olympus:4b002#Node1>:OUTPUT: [Olympus][TS: 1509427983.889726] Olympus created replica process: Replica 2
+[2017-10-31 01:33:03,890] olympus.Olympus<Olympus:4b002#Node1>:OUTPUT: [Olympus][TS: 1509427983.890239] Olympus created keys for replica process: Replica 2. Public key: b'ee81c32de34bb1e155c9e00d83c4dfa733c4d727ab05dfc16801e60ef03a0765'
+[2017-10-31 01:33:03,891] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509427983.891949] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:33:03,891] olympus.Olympus<Olympus:4b002#Node1>:ERROR: Unrecoverable error in DistAlgo process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/olympus.py", line 66, in run
+    self._start(self._state.replicas)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 347, in _start
+    flags=ChannelCaps.RELIABLEFIFO):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:33:03,908] bcr.Node_<Node_:Node1>:ERROR: Unrecoverable error in node process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 977, in _delayed_start
+    return self.run()
+  File "src/bcr.py", line 66, in run
+    self._start(clients)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 347, in _start
+    flags=ChannelCaps.RELIABLEFIFO):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:33:03,910] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:37:17,896] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:37:17,896] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:37:17,896] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:37:17,896] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:37:17,896] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:37:17,897] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509428237.8975859] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:37:17,936] olympus.Olympus<Olympus:05c02#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:37:21,063] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:37:22,231] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:37503)>.
+[2017-10-31 01:37:22,231] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=37503, TcpTransport=11404).
+[2017-10-31 01:37:22,231] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:37:22,231] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:37:22,232] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:37:22,263] replica.Replica<Replica:b3c02#Node2>:OUTPUT: [Head][TS: 1509428242.263542] replica failures: {}
+[2017-10-31 01:37:22,264] olympus.Olympus<Olympus:05c02#Node1>:OUTPUT: [Olympus][TS: 1509428242.26469] Olympus created replica process: Replica 0
+[2017-10-31 01:37:22,265] olympus.Olympus<Olympus:05c02#Node1>:OUTPUT: [Olympus][TS: 1509428242.265265] Olympus created keys for replica process: Replica 0. Public key: b'ddba6749dd2e55eaa6fbf655cd9dcc7918dca12d176231076f5c03857b8dc0f8'
+[2017-10-31 01:37:22,280] replica.Replica<Replica:b3c03#Node2>:OUTPUT: [Replica 1][TS: 1509428242.2807748] replica failures: {}
+[2017-10-31 01:37:22,281] olympus.Olympus<Olympus:05c02#Node1>:OUTPUT: [Olympus][TS: 1509428242.281893] Olympus created replica process: Replica 1
+[2017-10-31 01:37:22,282] olympus.Olympus<Olympus:05c02#Node1>:OUTPUT: [Olympus][TS: 1509428242.282451] Olympus created keys for replica process: Replica 1. Public key: b'05fdd380e541db7911cc6c93d6448ad7b2c97e6ba1f2b87d36673c8645a714aa'
+[2017-10-31 01:37:22,299] replica.Replica<Replica:b3c04#Node2>:OUTPUT: [Tail][TS: 1509428242.299119] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:37:22,300] olympus.Olympus<Olympus:05c02#Node1>:OUTPUT: [Olympus][TS: 1509428242.3002691] Olympus created replica process: Replica 2
+[2017-10-31 01:37:22,300] olympus.Olympus<Olympus:05c02#Node1>:OUTPUT: [Olympus][TS: 1509428242.300802] Olympus created keys for replica process: Replica 2. Public key: b'79ad4b9c2197595cbc27d334f4cc914eacb248c3f90f15cfe02feac3d5ac46d6'
+[2017-10-31 01:37:22,302] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509428242.3028889] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:37:22,302] olympus.Olympus<Olympus:05c02#Node1>:ERROR: Unrecoverable error in DistAlgo process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/olympus.py", line 66, in run
+    self._start(self._state.replicas)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 347, in _start
+    flags=ChannelCaps.RELIABLEFIFO):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:37:22,324] bcr.Node_<Node_:Node1>:ERROR: Unrecoverable error in node process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 977, in _delayed_start
+    return self.run()
+  File "src/bcr.py", line 66, in run
+    self._start(clients)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 347, in _start
+    flags=ChannelCaps.RELIABLEFIFO):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:37:22,326] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:38:57,117] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:38:57,117] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:38:57,118] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:38:57,118] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:38:57,118] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:38:57,119] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509428337.119122] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:38:57,148] olympus.Olympus<Olympus:85402#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:38:59,448] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:39:03,118] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:27155)>.
+[2017-10-31 01:39:03,119] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=27155, TcpTransport=19990).
+[2017-10-31 01:39:03,119] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:39:03,120] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:39:03,120] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:39:03,149] replica.Replica<Replica:9e802#Node2>:OUTPUT: [Head][TS: 1509428343.149441] replica failures: {}
+[2017-10-31 01:39:03,150] olympus.Olympus<Olympus:85402#Node1>:OUTPUT: [Olympus][TS: 1509428343.1504462] Olympus created replica process: Replica 0
+[2017-10-31 01:39:03,150] olympus.Olympus<Olympus:85402#Node1>:OUTPUT: [Olympus][TS: 1509428343.150961] Olympus created keys for replica process: Replica 0. Public key: b'1466d4a290756899bf0926bda1ede4fc2ccbda296a17e0cb762033387f45a0d5'
+[2017-10-31 01:39:03,172] replica.Replica<Replica:9e803#Node2>:OUTPUT: [Replica 1][TS: 1509428343.172371] replica failures: {}
+[2017-10-31 01:39:03,177] olympus.Olympus<Olympus:85402#Node1>:OUTPUT: [Olympus][TS: 1509428343.1773078] Olympus created replica process: Replica 1
+[2017-10-31 01:39:03,179] olympus.Olympus<Olympus:85402#Node1>:OUTPUT: [Olympus][TS: 1509428343.1790771] Olympus created keys for replica process: Replica 1. Public key: b'c60fe811374687cf3626d3dbe11e5d5c56cd4182b4395157ff8f07cb0cbf74d0'
+[2017-10-31 01:39:03,202] replica.Replica<Replica:9e804#Node2>:OUTPUT: [Tail][TS: 1509428343.2025652] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:39:03,204] olympus.Olympus<Olympus:85402#Node1>:OUTPUT: [Olympus][TS: 1509428343.204421] Olympus created replica process: Replica 2
+[2017-10-31 01:39:03,205] olympus.Olympus<Olympus:85402#Node1>:OUTPUT: [Olympus][TS: 1509428343.20516] Olympus created keys for replica process: Replica 2. Public key: b'f1d394c33f645c5badc5b2378aee681c226f697b30b6daad1bcf62e77a14ef60'
+[2017-10-31 01:39:03,207] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509428343.207433] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:39:03,207] olympus.Olympus<Olympus:85402#Node1>:ERROR: Unrecoverable error in DistAlgo process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/olympus.py", line 66, in run
+    self._start(self._state.replicas)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 347, in _start
+    flags=ChannelCaps.RELIABLEFIFO):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:39:03,229] bcr.Node_<Node_:Node1>:ERROR: Unrecoverable error in node process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 977, in _delayed_start
+    return self.run()
+  File "src/bcr.py", line 66, in run
+    self._start(clients.values())
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 347, in _start
+    flags=ChannelCaps.RELIABLEFIFO):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:39:03,232] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:40:23,936] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:40:32,898] da.sim.Router<MainProcess>:WARNING: Caught exception while processing router message from <Node_:ClientNode>((<RouterCommands.HELLO: 1>, [<Node_:ClientNode>])): CircularRoutingException('destination: <Node_:ClientNode>',)
+[2017-10-31 01:40:38,004] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:40:38,005] da.api<MainProcess>:INFO: <Node_:ClientNode> initialized at 0.0.0.0:(UdpTransport=15000, TcpTransport=11360).
+[2017-10-31 01:40:38,005] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:40:38,005] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:40:38,006] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:40:38,007] bcr.Node_<Node_:ClientNode>:OUTPUT: [Main][TS: 1509428438.007225] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:40:38,007] bcr.Node_<Node_:ClientNode>:INFO: Waiting to resolve name 'Node1'...
+[2017-10-31 01:40:46,506] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:41:14,432] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:41:14,432] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:41:14,433] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:41:14,433] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:41:14,433] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:41:14,434] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509428474.434176] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:41:14,470] olympus.Olympus<Olympus:ce402#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:41:18,486] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:12439)>.
+[2017-10-31 01:41:18,486] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=12439, TcpTransport=12024).
+[2017-10-31 01:41:18,487] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:41:18,487] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:41:18,489] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:41:18,523] replica.Replica<Replica:40002#Node2>:OUTPUT: [Head][TS: 1509428478.5237381] replica failures: {}
+[2017-10-31 01:41:18,525] olympus.Olympus<Olympus:ce402#Node1>:OUTPUT: [Olympus][TS: 1509428478.525203] Olympus created replica process: Replica 0
+[2017-10-31 01:41:18,525] olympus.Olympus<Olympus:ce402#Node1>:OUTPUT: [Olympus][TS: 1509428478.525953] Olympus created keys for replica process: Replica 0. Public key: b'852e8a18ae60059cd175177f47a3a3e665da60d951d8154861fe50fd79c64563'
+[2017-10-31 01:41:18,543] replica.Replica<Replica:40003#Node2>:OUTPUT: [Replica 1][TS: 1509428478.543094] replica failures: {}
+[2017-10-31 01:41:18,544] olympus.Olympus<Olympus:ce402#Node1>:OUTPUT: [Olympus][TS: 1509428478.5441332] Olympus created replica process: Replica 1
+[2017-10-31 01:41:18,544] olympus.Olympus<Olympus:ce402#Node1>:OUTPUT: [Olympus][TS: 1509428478.544611] Olympus created keys for replica process: Replica 1. Public key: b'acdfe8632d154e10e0e02a515c43f97250c9d8eba63277fa0954585a92fdff09'
+[2017-10-31 01:41:18,565] replica.Replica<Replica:40004#Node2>:OUTPUT: [Tail][TS: 1509428478.565328] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:41:18,566] olympus.Olympus<Olympus:ce402#Node1>:OUTPUT: [Olympus][TS: 1509428478.5665128] Olympus created replica process: Replica 2
+[2017-10-31 01:41:18,566] olympus.Olympus<Olympus:ce402#Node1>:OUTPUT: [Olympus][TS: 1509428478.566962] Olympus created keys for replica process: Replica 2. Public key: b'cd62bdaf6985248ac554792fc6054e32a49e194dfe0816117f878dcab1426c63'
+[2017-10-31 01:41:18,568] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509428478.5685492] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:41:18,568] olympus.Olympus<Olympus:ce402#Node1>:ERROR: Unrecoverable error in DistAlgo process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/olympus.py", line 66, in run
+    self._start(self._state.replicas)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 347, in _start
+    flags=ChannelCaps.RELIABLEFIFO):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:41:18,588] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:43:00,394] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:43:00,394] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:43:00,394] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:43:00,394] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:43:00,395] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:43:00,395] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509428580.395653] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:43:00,431] olympus.Olympus<Olympus:6d802#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:43:02,828] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:43:04,141] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:13574)>.
+[2017-10-31 01:43:04,141] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=13574, TcpTransport=13299).
+[2017-10-31 01:43:04,141] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:43:04,142] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:43:04,142] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:43:04,176] replica.Replica<Replica:0e402#Node2>:OUTPUT: [Head][TS: 1509428584.176327] replica failures: {}
+[2017-10-31 01:43:04,178] olympus.Olympus<Olympus:6d802#Node1>:OUTPUT: [Olympus][TS: 1509428584.1779761] Olympus created replica process: Replica 0
+[2017-10-31 01:43:04,178] olympus.Olympus<Olympus:6d802#Node1>:OUTPUT: [Olympus][TS: 1509428584.178827] Olympus created keys for replica process: Replica 0. Public key: b'85bc683ee680fb47ad2dc5acc3f67988226cb8aca6a4ccc1c674ee397efd1e7c'
+[2017-10-31 01:43:04,198] replica.Replica<Replica:0e403#Node2>:OUTPUT: [Replica 1][TS: 1509428584.1985862] replica failures: {}
+[2017-10-31 01:43:04,199] olympus.Olympus<Olympus:6d802#Node1>:OUTPUT: [Olympus][TS: 1509428584.199798] Olympus created replica process: Replica 1
+[2017-10-31 01:43:04,200] olympus.Olympus<Olympus:6d802#Node1>:OUTPUT: [Olympus][TS: 1509428584.200352] Olympus created keys for replica process: Replica 1. Public key: b'b7fd823bd8f3c8833df4aa746aaca76d8d3ed7fa65c068863188453bc7428934'
+[2017-10-31 01:43:04,217] replica.Replica<Replica:0e404#Node2>:OUTPUT: [Tail][TS: 1509428584.217397] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:43:04,218] olympus.Olympus<Olympus:6d802#Node1>:OUTPUT: [Olympus][TS: 1509428584.218529] Olympus created replica process: Replica 2
+[2017-10-31 01:43:04,219] olympus.Olympus<Olympus:6d802#Node1>:OUTPUT: [Olympus][TS: 1509428584.219052] Olympus created keys for replica process: Replica 2. Public key: b'7babb1281348a845603cf3db6a751c599e86dc688e4632b3bf180b626cded3f0'
+[2017-10-31 01:43:04,220] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509428584.2205591] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:43:04,224] olympus.Olympus<Olympus:6d802#Node1>:ERROR: Unrecoverable error in DistAlgo process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/olympus.py", line 68, in run
+    self.sign_and_send(('Configuration', self._id, self._state.replicas, self._state.head, self._state.tail, [self._state.replica_public_keys, self._state.configuration_number]), self._state.replicas)
+  File "src/olympus.py", line 93, in sign_and_send
+    self.send(tuple(data), to=to_)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 495, in send
+    impersonate=impersonate)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:43:04,238] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:50:33,337] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:50:33,337] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:50:33,337] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:50:33,337] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:50:33,337] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:50:33,338] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429033.338384] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:50:33,370] olympus.Olympus<Olympus:5c002#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:50:36,765] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:50:37,679] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:33531)>.
+[2017-10-31 01:50:37,679] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=33531, TcpTransport=26607).
+[2017-10-31 01:50:37,679] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:50:37,679] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:50:37,680] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:50:37,705] replica.Replica<Replica:56402#Node2>:OUTPUT: [Head][TS: 1509429037.705584] replica failures: {}
+[2017-10-31 01:50:37,706] olympus.Olympus<Olympus:5c002#Node1>:OUTPUT: [Olympus][TS: 1509429037.7067788] Olympus created replica process: Replica 0
+[2017-10-31 01:50:37,707] olympus.Olympus<Olympus:5c002#Node1>:OUTPUT: [Olympus][TS: 1509429037.707414] Olympus created keys for replica process: Replica 0. Public key: b'f1e162da29259ae39d0c7b35b230cd27de95509b4f1f433fce0c41e35dc699ca'
+[2017-10-31 01:50:37,727] replica.Replica<Replica:56403#Node2>:OUTPUT: [Replica 1][TS: 1509429037.727638] replica failures: {}
+[2017-10-31 01:50:37,729] olympus.Olympus<Olympus:5c002#Node1>:OUTPUT: [Olympus][TS: 1509429037.7294238] Olympus created replica process: Replica 1
+[2017-10-31 01:50:37,731] olympus.Olympus<Olympus:5c002#Node1>:OUTPUT: [Olympus][TS: 1509429037.730985] Olympus created keys for replica process: Replica 1. Public key: b'da2b4c1b2b7ba557babada55ae02bb09744118e0255aab0cc6e46de7b04392c0'
+[2017-10-31 01:50:37,752] replica.Replica<Replica:56404#Node2>:OUTPUT: [Tail][TS: 1509429037.752407] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:50:37,753] olympus.Olympus<Olympus:5c002#Node1>:OUTPUT: [Olympus][TS: 1509429037.753691] Olympus created replica process: Replica 2
+[2017-10-31 01:50:37,756] olympus.Olympus<Olympus:5c002#Node1>:OUTPUT: [Olympus][TS: 1509429037.756791] Olympus created keys for replica process: Replica 2. Public key: b'2925702da35bcbecb227ae39ab6692fcfdda6f0f9b636866ae6aa3e12df4297e'
+[2017-10-31 01:50:37,758] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429037.7585258] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:50:37,758] olympus.Olympus<Olympus:5c002#Node1>:ERROR: Unrecoverable error in DistAlgo process: TypeError("'int' object is not iterable",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/olympus.py", line 67, in run
+    self._start(r)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 347, in _start
+    flags=ChannelCaps.RELIABLEFIFO):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 576, in _send1
+    for dest in target:
+TypeError: 'int' object is not iterable
+[2017-10-31 01:50:37,778] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:50:37,778] client.Client<Client:5c003#Node1>:ERROR: Unrecoverable error in DistAlgo process: NameError("name 'replicas_dict' is not defined",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/client.py", line 58, in run
+    if PatternExpr_556.match_iter(self._ClientReceivedEvent_3, _BoundPattern566_=replicas_dict, _BoundPattern567_=self._state.head, SELF_ID=self._id):
+NameError: name 'replicas_dict' is not defined
+[2017-10-31 01:52:54,403] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:52:54,403] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:52:54,403] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:52:54,403] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:52:54,404] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:52:54,404] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429174.404587] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:52:54,441] olympus.Olympus<Olympus:3e802#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:52:56,887] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:52:58,155] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:21947)>.
+[2017-10-31 01:52:58,156] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=21947, TcpTransport=29685).
+[2017-10-31 01:52:58,156] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:52:58,156] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:52:58,156] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:52:58,186] replica.Replica<Replica:00802#Node2>:OUTPUT: [Head][TS: 1509429178.186164] replica failures: {}
+[2017-10-31 01:52:58,187] olympus.Olympus<Olympus:3e802#Node1>:OUTPUT: [Olympus][TS: 1509429178.1879082] Olympus created replica process: Replica 0
+[2017-10-31 01:52:58,188] olympus.Olympus<Olympus:3e802#Node1>:OUTPUT: [Olympus][TS: 1509429178.1886709] Olympus created keys for replica process: Replica 0. Public key: b'92b1733bb603be546ed19d7fd6ef225663a36b4918369ae35f103784300d0394'
+[2017-10-31 01:52:58,206] replica.Replica<Replica:00803#Node2>:OUTPUT: [Replica 1][TS: 1509429178.206084] replica failures: {}
+[2017-10-31 01:52:58,211] olympus.Olympus<Olympus:3e802#Node1>:OUTPUT: [Olympus][TS: 1509429178.211078] Olympus created replica process: Replica 1
+[2017-10-31 01:52:58,211] olympus.Olympus<Olympus:3e802#Node1>:OUTPUT: [Olympus][TS: 1509429178.211673] Olympus created keys for replica process: Replica 1. Public key: b'e1f0a99aef029aa5eaa4cfad5e1566e8c72a2de5dd8cc988addc514f3a774275'
+[2017-10-31 01:52:58,230] replica.Replica<Replica:00804#Node2>:OUTPUT: [Tail][TS: 1509429178.230321] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:52:58,234] olympus.Olympus<Olympus:3e802#Node1>:OUTPUT: [Olympus][TS: 1509429178.2348921] Olympus created replica process: Replica 2
+[2017-10-31 01:52:58,237] olympus.Olympus<Olympus:3e802#Node1>:OUTPUT: [Olympus][TS: 1509429178.237322] Olympus created keys for replica process: Replica 2. Public key: b'b3c96f1d44c5b8d32163ba14afe31b4aab5f5dbe0bcde23a8a5bcdf18aa50caf'
+[2017-10-31 01:52:58,239] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429178.23941] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:52:58,246] replica.Replica<Replica:00802#Node2>:OUTPUT: [Head][TS: 1509429178.246111] Head received replica references and public keys from Olympus
+[2017-10-31 01:52:58,248] replica.Replica<Replica:00803#Node2>:OUTPUT: [Replica 1][TS: 1509429178.248367] Replica 1 received replica references and public keys from Olympus
+[2017-10-31 01:52:58,248] olympus.Olympus<Olympus:3e802#Node1>:ERROR: Unrecoverable error in DistAlgo process: TypeError("'int' object is not iterable",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/olympus.py", line 70, in run
+    self.send(('Key', self._state.replica_private_keys[i]), to=replica)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 495, in send
+    impersonate=impersonate)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 576, in _send1
+    for dest in target:
+TypeError: 'int' object is not iterable
+[2017-10-31 01:52:58,251] replica.Replica<Replica:00804#Node2>:OUTPUT: [Tail][TS: 1509429178.2510898] Tail received replica references and public keys from Olympus
+[2017-10-31 01:52:58,258] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:52:58,258] client.Client<Client:3e803#Node1>:ERROR: Unrecoverable error in DistAlgo process: NameError("name 'replicas_dict' is not defined",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/client.py", line 58, in run
+    if PatternExpr_556.match_iter(self._ClientReceivedEvent_3, _BoundPattern566_=replicas_dict, _BoundPattern567_=self._state.head, SELF_ID=self._id):
+NameError: name 'replicas_dict' is not defined
+[2017-10-31 01:54:15,259] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:54:15,259] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:54:15,259] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:54:15,260] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:54:15,260] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:54:15,260] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429255.260871] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:54:15,298] olympus.Olympus<Olympus:cbc02#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:54:16,975] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:54:17,878] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:34936)>.
+[2017-10-31 01:54:17,878] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=34936, TcpTransport=31553).
+[2017-10-31 01:54:17,878] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:54:17,879] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:54:17,879] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:54:17,905] replica.Replica<Replica:66402#Node2>:OUTPUT: [Head][TS: 1509429257.905104] replica failures: {}
+[2017-10-31 01:54:17,906] olympus.Olympus<Olympus:cbc02#Node1>:OUTPUT: [Olympus][TS: 1509429257.906332] Olympus created replica process: Replica 0
+[2017-10-31 01:54:17,906] olympus.Olympus<Olympus:cbc02#Node1>:OUTPUT: [Olympus][TS: 1509429257.906922] Olympus created keys for replica process: Replica 0. Public key: b'c9842d0be64c7b2e15c5257ac94edc8ebad817ece0e8866276a0cced3d1aef55'
+[2017-10-31 01:54:17,926] replica.Replica<Replica:66403#Node2>:OUTPUT: [Replica 1][TS: 1509429257.926152] replica failures: {}
+[2017-10-31 01:54:17,927] olympus.Olympus<Olympus:cbc02#Node1>:OUTPUT: [Olympus][TS: 1509429257.927649] Olympus created replica process: Replica 1
+[2017-10-31 01:54:17,928] olympus.Olympus<Olympus:cbc02#Node1>:OUTPUT: [Olympus][TS: 1509429257.928447] Olympus created keys for replica process: Replica 1. Public key: b'4d2d090429c8bc20cd1adfb2928977487db236cc3564f08ee5807f79f3d809fb'
+[2017-10-31 01:54:17,949] replica.Replica<Replica:66404#Node2>:OUTPUT: [Tail][TS: 1509429257.9492428] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:54:17,950] olympus.Olympus<Olympus:cbc02#Node1>:OUTPUT: [Olympus][TS: 1509429257.9507709] Olympus created replica process: Replica 2
+[2017-10-31 01:54:17,951] olympus.Olympus<Olympus:cbc02#Node1>:OUTPUT: [Olympus][TS: 1509429257.9513972] Olympus created keys for replica process: Replica 2. Public key: b'cfaa65a5d9af3c7a3169c4d3a9a6fecc403f57f4e05fe8ddead3afb1653dcd27'
+[2017-10-31 01:54:17,953] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429257.953334] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:54:17,955] olympus.Olympus<Olympus:cbc02#Node1>:ERROR: Unrecoverable error in DistAlgo process: NameError("name 'replica' is not defined",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/olympus.py", line 69, in run
+    self.send(('Key', self._state.replica_private_keys[i]), to=replica)
+NameError: name 'replica' is not defined
+[2017-10-31 01:54:17,960] replica.Replica<Replica:66402#Node2>:OUTPUT: [Head][TS: 1509429257.960465] Head received replica references and public keys from Olympus
+[2017-10-31 01:54:17,971] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:54:17,971] client.Client<Client:cbc03#Node1>:ERROR: Unrecoverable error in DistAlgo process: NameError("name 'replicas_dict' is not defined",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/client.py", line 58, in run
+    if PatternExpr_556.match_iter(self._ClientReceivedEvent_3, _BoundPattern566_=replicas_dict, _BoundPattern567_=self._state.head, SELF_ID=self._id):
+NameError: name 'replicas_dict' is not defined
+[2017-10-31 01:54:31,404] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:54:31,404] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:54:31,404] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:54:31,404] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:54:31,405] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:54:31,405] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429271.405594] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:54:31,439] olympus.Olympus<Olympus:7b802#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:54:33,811] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:54:34,491] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:35803)>.
+[2017-10-31 01:54:34,491] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=35803, TcpTransport=31430).
+[2017-10-31 01:54:34,491] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:54:34,492] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:54:34,492] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:54:34,522] replica.Replica<Replica:7a402#Node2>:OUTPUT: [Head][TS: 1509429274.522657] replica failures: {}
+[2017-10-31 01:54:34,523] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.5238872] Olympus created replica process: Replica 0
+[2017-10-31 01:54:34,524] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.524435] Olympus created keys for replica process: Replica 0. Public key: b'2590e425f907a4b3032609f739926bbac141ec79e93729a16fb19f6d12f539be'
+[2017-10-31 01:54:34,540] replica.Replica<Replica:7a403#Node2>:OUTPUT: [Replica 1][TS: 1509429274.540191] replica failures: {}
+[2017-10-31 01:54:34,541] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.541758] Olympus created replica process: Replica 1
+[2017-10-31 01:54:34,542] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.5424159] Olympus created keys for replica process: Replica 1. Public key: b'e3aee897bd4806a3df318ecae3d7b3971053c7f1fb4d1a21ad646041219aa299'
+[2017-10-31 01:54:34,566] replica.Replica<Replica:7a404#Node2>:OUTPUT: [Tail][TS: 1509429274.5662742] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:54:34,569] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.569864] Olympus created replica process: Replica 2
+[2017-10-31 01:54:34,570] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.570446] Olympus created keys for replica process: Replica 2. Public key: b'a9f5239863724114ba9613a3cda4b050f5247d27ae8aeac7447cc6ecc89ee878'
+[2017-10-31 01:54:34,572] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429274.57248] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:54:34,576] replica.Replica<Replica:7a402#Node2>:OUTPUT: [Head][TS: 1509429274.576541] Head received replica references and public keys from Olympus
+[2017-10-31 01:54:34,577] replica.Replica<Replica:7a402#Node2>:OUTPUT: [Head][TS: 1509429274.5778959] Head has receives its private key from Olympus.
+[2017-10-31 01:54:34,578] replica.Replica<Replica:7a403#Node2>:OUTPUT: [Replica 1][TS: 1509429274.5784461] Replica 1 received replica references and public keys from Olympus
+[2017-10-31 01:54:34,579] replica.Replica<Replica:7a403#Node2>:OUTPUT: [Replica 1][TS: 1509429274.579802] Replica 1 has receives its private key from Olympus.
+[2017-10-31 01:54:34,580] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.5807319] ACK from Head.
+[2017-10-31 01:54:34,581] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.5813172] ACK from Head.
+[2017-10-31 01:54:34,581] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.581835] ACK from Replica 1.
+[2017-10-31 01:54:34,582] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.582643] ACK from Replica 1.
+[2017-10-31 01:54:34,583] replica.Replica<Replica:7a404#Node2>:OUTPUT: [Tail][TS: 1509429274.583044] Tail received replica references and public keys from Olympus
+[2017-10-31 01:54:34,584] replica.Replica<Replica:7a404#Node2>:OUTPUT: [Tail][TS: 1509429274.5842078] Tail has receives its private key from Olympus.
+[2017-10-31 01:54:34,584] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.5841029] ACK from Tail.
+[2017-10-31 01:54:34,585] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.5852642] ACK from Tail.
+[2017-10-31 01:54:34,591] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:54:34,592] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:54:34,593] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:54:34,593] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:54:34,591] client.Client<Client:7b803#Node1>:ERROR: Unrecoverable error in DistAlgo process: NameError("name 'replicas_dict' is not defined",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/client.py", line 58, in run
+    if PatternExpr_556.match_iter(self._ClientReceivedEvent_3, _BoundPattern566_=replicas_dict, _BoundPattern567_=self._state.head, SELF_ID=self._id):
+NameError: name 'replicas_dict' is not defined
+[2017-10-31 01:54:34,594] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.5941272] Received public key: b'5fc0a75d74489aa86b34df47aad6cd1aed272b914d2eae5719f842ce7038da68' from client: Client 0
+[2017-10-31 01:54:34,594] olympus.Olympus<Olympus:7b802#Node1>:OUTPUT: [Olympus][TS: 1509429274.594549] Configuration sent to Client 0.
+[2017-10-31 01:56:42,219] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:56:42,219] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:56:42,219] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:56:42,219] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:56:42,219] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:56:42,220] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429402.220384] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:56:42,259] olympus.Olympus<Olympus:aac02#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:56:44,887] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:56:45,544] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:34980)>.
+[2017-10-31 01:56:45,544] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=34980, TcpTransport=21287).
+[2017-10-31 01:56:45,545] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:56:45,545] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:56:45,545] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:56:45,576] replica.Replica<Replica:6ac02#Node2>:OUTPUT: [Head][TS: 1509429405.575973] replica failures: {}
+[2017-10-31 01:56:45,577] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.577834] Olympus created replica process: Replica 0
+[2017-10-31 01:56:45,578] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.5786922] Olympus created keys for replica process: Replica 0. Public key: b'af1c67e7f7fb37e1bd338867e96817c71ef9c739dca09b774185db698df5dae5'
+[2017-10-31 01:56:45,595] replica.Replica<Replica:6ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429405.5951731] replica failures: {}
+[2017-10-31 01:56:45,596] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.596423] Olympus created replica process: Replica 1
+[2017-10-31 01:56:45,596] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.5969532] Olympus created keys for replica process: Replica 1. Public key: b'96081373cf0549aa781b094265d8dd5adef950db3937deb3b7ddc27c26039264'
+[2017-10-31 01:56:45,615] replica.Replica<Replica:6ac04#Node2>:OUTPUT: [Tail][TS: 1509429405.6154518] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:56:45,616] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.616868] Olympus created replica process: Replica 2
+[2017-10-31 01:56:45,617] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.6175182] Olympus created keys for replica process: Replica 2. Public key: b'c92dbd2222468f467debf57860decc736907193cf67af2f7b984ccfedd07a5d8'
+[2017-10-31 01:56:45,619] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429405.619375] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:56:45,623] replica.Replica<Replica:6ac02#Node2>:OUTPUT: [Head][TS: 1509429405.623242] Head received replica references and public keys from Olympus
+[2017-10-31 01:56:45,624] replica.Replica<Replica:6ac02#Node2>:OUTPUT: [Head][TS: 1509429405.6246169] Head has receives its private key from Olympus.
+[2017-10-31 01:56:45,625] replica.Replica<Replica:6ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429405.625086] Replica 1 received replica references and public keys from Olympus
+[2017-10-31 01:56:45,626] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.6264162] ACK from Head.
+[2017-10-31 01:56:45,626] replica.Replica<Replica:6ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429405.626483] Replica 1 has receives its private key from Olympus.
+[2017-10-31 01:56:45,627] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.627444] ACK from Head.
+[2017-10-31 01:56:45,628] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.628279] ACK from Replica 1.
+[2017-10-31 01:56:45,628] replica.Replica<Replica:6ac04#Node2>:OUTPUT: [Tail][TS: 1509429405.628452] Tail received replica references and public keys from Olympus
+[2017-10-31 01:56:45,629] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.62915] ACK from Replica 1.
+[2017-10-31 01:56:45,629] replica.Replica<Replica:6ac04#Node2>:OUTPUT: [Tail][TS: 1509429405.6299012] Tail has receives its private key from Olympus.
+[2017-10-31 01:56:45,630] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.630023] ACK from Tail.
+[2017-10-31 01:56:45,631] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.631201] ACK from Tail.
+[2017-10-31 01:56:45,638] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:56:45,639] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:56:45,640] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:56:45,639] client.Client<Client:aac03#Node1>:OUTPUT: [Client 0][TS: 1509429405.6397052] Client 0 is configured.
+[2017-10-31 01:56:45,640] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:56:45,641] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.6410189] Received public key: b'e72e9262e4e9386bd8872c88381d077727d234bfceb10d21d03efc129fe132a6' from client: Client 0
+[2017-10-31 01:56:45,641] client.Client<Client:aac03#Node1>:OUTPUT: [Client 0][TS: 1509429405.6413062] Received the public keys of replicas from Olympus
+[2017-10-31 01:56:45,641] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.6416261] Configuration sent to Client 0.
+[2017-10-31 01:56:45,641] replica.Replica<Replica:6ac02#Node2>:OUTPUT: [Head][TS: 1509429405.641865] get request with request id 0 received by Head.
+[2017-10-31 01:56:45,641] client.Client<Client:aac03#Node1>:OUTPUT: [Client 0][TS: 1509429405.641943] Received the public key of Olympus.
+[2017-10-31 01:56:45,642] replica.Replica<Replica:6ac02#Node2>:OUTPUT: [Head][TS: 1509429405.6423192] Head is in ACTIVE state.
+[2017-10-31 01:56:45,642] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.642373] ACK from Client 0.
+[2017-10-31 01:56:45,642] replica.Replica<Replica:6ac02#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:aac03#Node1>, 'client': <Client:aac03#Node1>, 'request_id': 0, 'client_id': 0, 'args': b'\xdf\xd9\xf2\xd6\x05\x8b\xd8\xac\xe9\xcf\xbb<w\xbaP\xc0\x0f\xe2\xaf\xbb1\x8c\x07\xed\xc9\xe0E`\xaf\x89\xb4\x9b\x05\x18\xce\xac\xe4\t"e\xd3\x9e\xa5\x10q\xaf\xbb{\xc3\xe9\x9a\xb63_\xb1\xa6\x03\xf9\xcf\xab\xf3\xbf\x14\x0c[\'horror\']'}': 0
+[2017-10-31 01:56:45,643] olympus.Olympus<Olympus:aac02#Node1>:OUTPUT: [Olympus][TS: 1509429405.6431308] ACK from Client 0.
+[2017-10-31 01:56:48,643] client.Client<Client:aac03#Node1>:OUTPUT: [Client 0][TS: 1509429408.643201] Timeout: Retrying request id: 0, sending to all replicas
+[2017-10-31 01:56:48,644] client.Client<Client:aac03#Node1>:ERROR: Unrecoverable error in DistAlgo process: TypeError("unhashable type: 'set'",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 159, in _delayed_start
+    return self.run()
+  File "src/client.py", line 68, in run
+    self.send_request(op[0], op[1], retry)
+  File "src/client.py", line 147, in send_request
+    self.send((None, 'Request', type, self._id, self._id, self._state.request_id, self._state.client_id, args), to=self._state.replicas)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 495, in send
+    impersonate=impersonate)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 581, in _send1
+    params, flags):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1139, in send
+    return self._dispatch(src, dest, mesg, params, flags)
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 1182, in _dispatch
+    if dest in self.local_procs:
+TypeError: unhashable type: 'set'
+[2017-10-31 01:58:04,553] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:58:04,554] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:58:04,554] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:58:04,556] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:58:04,557] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:58:04,558] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429484.5584378] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:58:04,600] olympus.Olympus<Olympus:fc802#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:58:05,686] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:58:09,229] da.api<MainProcess>:INFO: Bootstrapping attempt failed due to BootstrapException('Unable to contact a peer node.',),  continuing as a master node (use '--master' to disable bootstrapping at startup).
+[2017-10-31 01:58:09,229] da.api<MainProcess>:INFO: <Node_:Node1> initialized at 127.0.0.1:(UdpTransport=15000, TcpTransport=15000).
+[2017-10-31 01:58:09,229] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:58:09,229] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:58:09,230] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:58:09,230] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429489.2306519] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:58:09,262] olympus.Olympus<Olympus:bd802#Node1>:INFO: Waiting to resolve name 'Node2'...
+[2017-10-31 01:58:11,137] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
+[2017-10-31 01:58:12,690] da.sim.Router<MainProcess>:INFO: Bootstrap succeeded using <UdpTransport(127.0.0.1:31790)>.
+[2017-10-31 01:58:12,691] da.api<MainProcess>:INFO: <Node_:Node2> initialized at 127.0.0.1:(UdpTransport=31790, TcpTransport=24329).
+[2017-10-31 01:58:12,691] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:58:12,692] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:58:12,693] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:58:12,731] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429492.731906] replica failures: {}
+[2017-10-31 01:58:12,733] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.7330759] Olympus created replica process: Replica 0
+[2017-10-31 01:58:12,733] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.733831] Olympus created keys for replica process: Replica 0. Public key: b'0ebc939c875f071a43f4fb73d44a6896674dfad49cb845abf53a23531206fdae'
+[2017-10-31 01:58:12,751] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429492.751797] replica failures: {}
+[2017-10-31 01:58:12,753] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.753543] Olympus created replica process: Replica 1
+[2017-10-31 01:58:12,754] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.7542982] Olympus created keys for replica process: Replica 1. Public key: b'1b23d8226521e633a8352cbd4d309e8e8de488280a21e69a1cf558d1630c8a62'
+[2017-10-31 01:58:12,773] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429492.773513] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:58:12,775] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.774988] Olympus created replica process: Replica 2
+[2017-10-31 01:58:12,775] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.77568] Olympus created keys for replica process: Replica 2. Public key: b'84f6ffcd463f9a61572ec7336ef5db8e8a23cc8f1f8f075d140f14a21580e7d4'
+[2017-10-31 01:58:12,777] bcr.Node_<Node_:Node1>:OUTPUT: [Main][TS: 1509429492.777438] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:58:12,782] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429492.781991] Head received replica references and public keys from Olympus
+[2017-10-31 01:58:12,785] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429492.785109] Replica 1 received replica references and public keys from Olympus
+[2017-10-31 01:58:12,786] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.7859929] ACK from Head.
+[2017-10-31 01:58:12,786] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429492.7865338] Replica 1 has receives its private key from Olympus.
+[2017-10-31 01:58:12,786] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.786967] ACK from Replica 1.
+[2017-10-31 01:58:12,787] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.78778] ACK from Replica 1.
+[2017-10-31 01:58:12,785] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429492.785939] Head has receives its private key from Olympus.
+[2017-10-31 01:58:12,788] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429492.7885451] Tail received replica references and public keys from Olympus
+[2017-10-31 01:58:12,789] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.7893372] ACK from Head.
+[2017-10-31 01:58:12,789] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429492.789793] Tail has receives its private key from Olympus.
+[2017-10-31 01:58:12,790] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.790167] ACK from Tail.
+[2017-10-31 01:58:12,791] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.7909791] ACK from Tail.
+[2017-10-31 01:58:12,795] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:58:12,796] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:58:12,796] client.Client<Client:bd803#Node1>:OUTPUT: [Client 0][TS: 1509429492.796672] Client 0 is configured.
+[2017-10-31 01:58:12,797] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:58:12,797] da.sim.Router<OSProcessContainer-1>:ERROR: Could not send message due to: AttributeError("'int' object has no attribute 'hostname'",)
+[2017-10-31 01:58:12,798] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429492.798456] get request with request id 0 received by Head.
+[2017-10-31 01:58:12,798] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429492.7988229] Head is in ACTIVE state.
+[2017-10-31 01:58:12,799] replica.Replica<Replica:0ac02#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:12,798] client.Client<Client:bd803#Node1>:OUTPUT: [Client 0][TS: 1509429492.798135] Received the public keys of replicas from Olympus
+[2017-10-31 01:58:12,798] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.79825] Received public key: b'47e9ac11e81ff5d7148a428ec9ad84dab59b5eca5928b95edc2b107cf726bc8b' from client: Client 0
+[2017-10-31 01:58:12,803] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.803246] Configuration sent to Client 0.
+[2017-10-31 01:58:12,803] client.Client<Client:bd803#Node1>:OUTPUT: [Client 0][TS: 1509429492.8032699] Received the public key of Olympus.
+[2017-10-31 01:58:12,803] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.8037639] ACK from Client 0.
+[2017-10-31 01:58:12,804] olympus.Olympus<Olympus:bd802#Node1>:OUTPUT: [Olympus][TS: 1509429492.804409] ACK from Client 0.
+[2017-10-31 01:58:15,804] client.Client<Client:bd803#Node1>:OUTPUT: [Client 0][TS: 1509429495.8045492] Timeout: Retrying request id: 0, sending to all replicas
+[2017-10-31 01:58:15,807] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429495.807188] get request with request id 0 received by Head.
+[2017-10-31 01:58:15,807] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429495.807338] get request with request id 0 received by Replica 1.
+[2017-10-31 01:58:15,807] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429495.8078232] get request with request id 0 received by Tail.
+[2017-10-31 01:58:15,808] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429495.8084018] Head is in ACTIVE state.
+[2017-10-31 01:58:15,808] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429495.808665] Replica 1 is in ACTIVE state.
+[2017-10-31 01:58:15,808] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429495.808722] Tail is in ACTIVE state.
+[2017-10-31 01:58:15,809] replica.Replica<Replica:0ac04#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:15,809] replica.Replica<Replica:0ac03#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:15,809] replica.Replica<Replica:0ac02#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:18,808] client.Client<Client:bd803#Node1>:OUTPUT: [Client 0][TS: 1509429498.808476] Timeout: Retrying request id: 0, sending to all replicas
+[2017-10-31 01:58:18,811] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429498.8118331] get request with request id 0 received by Head.
+[2017-10-31 01:58:18,812] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429498.812052] get request with request id 0 received by Replica 1.
+[2017-10-31 01:58:18,812] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429498.812427] get request with request id 0 received by Tail.
+[2017-10-31 01:58:18,812] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429498.812768] Head is in ACTIVE state.
+[2017-10-31 01:58:18,812] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429498.812923] Replica 1 is in ACTIVE state.
+[2017-10-31 01:58:18,813] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429498.81331] Tail is in ACTIVE state.
+[2017-10-31 01:58:18,813] replica.Replica<Replica:0ac03#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:18,813] replica.Replica<Replica:0ac02#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:18,814] replica.Replica<Replica:0ac04#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:21,813] client.Client<Client:bd803#Node1>:OUTPUT: [Client 0][TS: 1509429501.813046] Timeout: Retrying request id: 0, sending to all replicas
+[2017-10-31 01:58:21,815] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429501.8157592] get request with request id 0 received by Head.
+[2017-10-31 01:58:21,816] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429501.8160908] get request with request id 0 received by Tail.
+[2017-10-31 01:58:21,816] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429501.815969] get request with request id 0 received by Replica 1.
+[2017-10-31 01:58:21,816] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429501.816772] Head is in ACTIVE state.
+[2017-10-31 01:58:21,816] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429501.81694] Tail is in ACTIVE state.
+[2017-10-31 01:58:21,817] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429501.817085] Replica 1 is in ACTIVE state.
+[2017-10-31 01:58:21,817] replica.Replica<Replica:0ac04#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:21,817] replica.Replica<Replica:0ac02#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:21,817] replica.Replica<Replica:0ac03#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:24,817] client.Client<Client:bd803#Node1>:OUTPUT: [Client 0][TS: 1509429504.8171241] Timeout: Retrying request id: 0, sending to all replicas
+[2017-10-31 01:58:24,819] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429504.819913] get request with request id 0 received by Head.
+[2017-10-31 01:58:24,820] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429504.8200629] get request with request id 0 received by Replica 1.
+[2017-10-31 01:58:24,820] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429504.820765] get request with request id 0 received by Tail.
+[2017-10-31 01:58:24,820] replica.Replica<Replica:0ac02#Node2>:OUTPUT: [Head][TS: 1509429504.820931] Head is in ACTIVE state.
+[2017-10-31 01:58:24,821] replica.Replica<Replica:0ac03#Node2>:OUTPUT: [Replica 1][TS: 1509429504.821131] Replica 1 is in ACTIVE state.
+[2017-10-31 01:58:24,821] replica.Replica<Replica:0ac04#Node2>:OUTPUT: [Tail][TS: 1509429504.821662] Tail is in ACTIVE state.
+[2017-10-31 01:58:24,821] replica.Replica<Replica:0ac02#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:24,821] replica.Replica<Replica:0ac03#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:24,822] replica.Replica<Replica:0ac04#Node2>:ERROR: KeyError(0,) when calling handler '_Replica_handler_527' with '{'sender_id': None, 'type': 'get', 'request_from': <Client:bd803#Node1>, 'client': <Client:bd803#Node1>, 'request_id': 0, 'client_id': 0, 'args': b"C\xc6\xa2\xe3k@\x1e\xf8\xb1`q0\xca\x12\\\xc5f\xf5c\xe3\xd4l\xf3\x94&a\x9c\x81\x18\x15\xbdF\xdc D2\xe3\xcbS\x84FC\xb1\xa3\xf8q\x84\xbeY\xaa\xfb0\xfc}c\xa2\xd4\xe8\xe3\x11A\x9cf\x01['horror']"}': 0
+[2017-10-31 01:58:28,540] da.api<MainProcess>:WARNING: Received keyboard interrupt. 
