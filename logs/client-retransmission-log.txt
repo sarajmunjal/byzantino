@@ -1,91 +1,140 @@
-[2017-10-22 23:40:01,949] da.api<MainProcess>:INFO: <Node_:a0001> initialized at 127.0.0.1:(UdpTransport=27528, TcpTransport=14520).
-[2017-10-22 23:40:01,950] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
-[2017-10-22 23:40:01,950] da.api<MainProcess>:INFO: Running iteration 1 ...
-[2017-10-22 23:40:01,951] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
-[2017-10-22 23:40:01,953] bcr.Node_<Node_:a0001>:OUTPUT: [Main][TS: 1508730001.9531012] Running BCR simulation for test case: basic_pseudo_random_workload
-[2017-10-22 23:40:02,022] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.02236] replica failures: {}
-[2017-10-22 23:40:02,024] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.024127] Olympus created replica process: Replica 0
-[2017-10-22 23:40:02,025] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.0251908] Olympus created keys for replica process: Replica 0. Public key: b'cc486f4d42abb3a601fd4dabc2f51354102a95e5dd3aad9238f58b1facdda6d2'
-[2017-10-22 23:40:02,041] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.041802] replica failures: {}
-[2017-10-22 23:40:02,043] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.043481] Olympus created replica process: Replica 1
-[2017-10-22 23:40:02,044] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.04459] Olympus created keys for replica process: Replica 1. Public key: b'd5ca5b14f7174879c009ce7c7e6751eb504cae94ac511abd9139ef38d9c11977'
-[2017-10-22 23:40:02,058] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.0589461] replica failures: [shuttle(0,0), change_result()]
-[2017-10-22 23:40:02,060] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.0600939] Olympus created replica process: Replica 2
-[2017-10-22 23:40:02,060] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.060897] Olympus created keys for replica process: Replica 2. Public key: b'137db2e457049d8043ce40dd7cdcfd602908e6d3e97841985974a9978ed11fa1'
-[2017-10-22 23:40:02,062] bcr.Node_<Node_:a0001>:OUTPUT: [Main][TS: 1508730002.0623538] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
-[2017-10-22 23:40:02,066] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.066407] Head received replica references and public keys from Olympus
-[2017-10-22 23:40:02,070] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.070585] ACK from Head.
-[2017-10-22 23:40:02,070] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.070474] Replica 1 received replica references and public keys from Olympus
-[2017-10-22 23:40:02,071] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.071392] Head has receives its private key from Olympus.
-[2017-10-22 23:40:02,072] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.072096] Replica 1 has receives its private key from Olympus.
-[2017-10-22 23:40:02,072] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.0719821] Tail received replica references and public keys from Olympus
-[2017-10-22 23:40:02,073] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.073291] Tail has receives its private key from Olympus.
-[2017-10-22 23:40:02,072] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.0729358] ACK from Replica 1.
-[2017-10-22 23:40:02,074] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.0739799] ACK from Head.
-[2017-10-22 23:40:02,074] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.074733] ACK from Replica 1.
-[2017-10-22 23:40:02,075] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.0752482] ACK from Tail.
-[2017-10-22 23:40:02,075] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.075723] ACK from Tail.
-[2017-10-22 23:40:02,079] da.api<MainProcess>:INFO: Main process terminated.
-[2017-10-22 23:40:02,081] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.081457] Client 0 is configured.
-[2017-10-22 23:40:02,083] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.0831559] Head has received client public key: b'1dd7cf5a0a0d620e223172ce4244f5c6be42598c52bc1bed5c544c186aef45d7' for client 0
-[2017-10-22 23:40:02,084] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.084932] Replica 1 has received client public key: b'1dd7cf5a0a0d620e223172ce4244f5c6be42598c52bc1bed5c544c186aef45d7' for client 0
-[2017-10-22 23:40:02,081] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.0818932] Received public key: b'1dd7cf5a0a0d620e223172ce4244f5c6be42598c52bc1bed5c544c186aef45d7' from client: Client 0
-[2017-10-22 23:40:02,086] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.0861561] Tail has received client public key: b'1dd7cf5a0a0d620e223172ce4244f5c6be42598c52bc1bed5c544c186aef45d7' for client 0
-[2017-10-22 23:40:02,086] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.0865479] Configuration sent to Client 0.
-[2017-10-22 23:40:02,088] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.0880089] Received the public keys of replicas from Olympus
-[2017-10-22 23:40:02,088] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.088428] get request with request id 0 received by Head.
-[2017-10-22 23:40:02,088] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.088301] ACK from Client 0.
-[2017-10-22 23:40:02,089] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.089657] Received the public key of Olympus.
-[2017-10-22 23:40:02,090] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.090082] ACK from Head.
-[2017-10-22 23:40:02,089] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.089887] Head is in ACTIVE state.
-[2017-10-22 23:40:02,092] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.091938] ACK from Replica 1.
-[2017-10-22 23:40:02,093] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.093599] ACK from Tail.
-[2017-10-22 23:40:02,094] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.094537] ACK from Client 0.
-[2017-10-22 23:40:02,098] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.098115] get request with request id 0 received by Replica 1.
-[2017-10-22 23:40:02,098] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.098499] Replica 1 is in ACTIVE state.
-[2017-10-22 23:40:02,100] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.100638] get request with request id 0 received by Tail.
-[2017-10-22 23:40:02,101] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.101038] Tail is in ACTIVE state.
-[2017-10-22 23:40:02,112] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.1127481] Replica Tail: Trigger shuttle failure for client_id: 0 and message count: 0, scenario: shuttle(0,0), change_result()
-[2017-10-22 23:40:02,115] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.1154938] Result shuttle sent by Replica 2 is not valid.
-[2017-10-22 23:40:02,115] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.115448] Number of correct result proofs received :2, required majority: 2
-[2017-10-22 23:40:02,116] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.116176] Valid result:  received for request id: 0
-[2017-10-22 23:40:02,116] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.116724] Misbehaviour detected in request id: 0! Sending reconfiguration request to Olympus
-[2017-10-22 23:40:02,116] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.116846] Reconfiguration request received from Tail.
-[2017-10-22 23:40:02,117] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.1174212] No reconfiguration mechanism implemented yet.
-[2017-10-22 23:40:02,118] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.11823] Reconfiguration request received from Client 0.
-[2017-10-22 23:40:02,118] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.118485] append request with request id 1 received by Head.
-[2017-10-22 23:40:02,118] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.118666] No reconfiguration mechanism implemented yet.
-[2017-10-22 23:40:02,118] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.118973] Head is in ACTIVE state.
-[2017-10-22 23:40:02,120] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.1207948] append request with request id 1 received by Replica 1.
-[2017-10-22 23:40:02,121] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.1216881] Replica 1 is in ACTIVE state.
-[2017-10-22 23:40:02,125] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.1250439] append request with request id 1 received by Tail.
-[2017-10-22 23:40:02,126] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.12626] Tail is in ACTIVE state.
-[2017-10-22 23:40:02,129] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.12919] Result shuttle sent by Replica 2 is not valid.
-[2017-10-22 23:40:02,129] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.129209] Number of correct result proofs received :2, required majority: 2
-[2017-10-22 23:40:02,129] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.12975] Valid result: fail received for request id: 1
-[2017-10-22 23:40:02,130] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.130155] Misbehaviour detected in request id: 1! Sending reconfiguration request to Olympus
-[2017-10-22 23:40:02,130] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.130267] Reconfiguration request received from Tail.
-[2017-10-22 23:40:02,130] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.130647] No reconfiguration mechanism implemented yet.
-[2017-10-22 23:40:02,131] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.1313019] Reconfiguration request received from Client 0.
-[2017-10-22 23:40:02,131] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.131663] No reconfiguration mechanism implemented yet.
-[2017-10-22 23:40:02,131] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.131666] get request with request id 2 received by Head.
-[2017-10-22 23:40:02,132] bcr.Replica<Replica:67c03>:OUTPUT: [Head][TS: 1508730002.132034] Head is in ACTIVE state.
-[2017-10-22 23:40:02,133] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.133353] get request with request id 2 received by Replica 1.
-[2017-10-22 23:40:02,133] bcr.Replica<Replica:67c04>:OUTPUT: [Replica 1][TS: 1508730002.133781] Replica 1 is in ACTIVE state.
-[2017-10-22 23:40:02,135] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.135221] get request with request id 2 received by Tail.
-[2017-10-22 23:40:02,135] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.13568] Tail is in ACTIVE state.
-[2017-10-22 23:40:02,137] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.137385] Number of correct result proofs received :2, required majority: 2
-[2017-10-22 23:40:02,137] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.137815] Valid result:  received for request id: 2
-[2017-10-22 23:40:02,137] bcr.Replica<Replica:67c05>:OUTPUT: [Tail][TS: 1508730002.1378298] Result shuttle sent by Replica 2 is not valid.
-[2017-10-22 23:40:02,138] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.1381629] Misbehaviour detected in request id: 2! Sending reconfiguration request to Olympus
-[2017-10-22 23:40:02,138] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.138931] Local running state of client after the given set of operations: {}.
-[2017-10-22 23:40:02,139] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.1390579] Reconfiguration request received from Tail.
-[2017-10-22 23:40:02,139] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.139431] Running state of client at the server (assuming no conflicting keys from other clients) after the given set of operations: {}.
-[2017-10-22 23:40:02,139] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.1396859] No reconfiguration mechanism implemented yet.
-[2017-10-22 23:40:02,139] bcr.Client<Client:67c03>:OUTPUT: [Client 0][TS: 1508730002.1398652] 
+[2017-10-31 00:46:28,849] da.api<MainProcess>:INFO: <Node_:1dc01> initialized at 127.0.0.1:(UdpTransport=30502, TcpTransport=15837).
+[2017-10-31 00:46:28,849] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 00:46:28,849] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 00:46:28,849] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 00:46:28,851] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509425188.851339] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 00:46:28,944] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509425188.94489] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 00:46:28,963] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 00:57:01,955] da.api<MainProcess>:INFO: <Node_:1dc01> initialized at 127.0.0.1:(UdpTransport=19570, TcpTransport=13785).
+[2017-10-31 00:57:01,956] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 00:57:01,956] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 00:57:01,956] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 00:57:01,958] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509425821.958783] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 00:57:02,055] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509425822.0559201] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 00:57:02,074] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:01:59,889] da.api<MainProcess>:INFO: <Node_:1dc01> initialized at 127.0.0.1:(UdpTransport=12048, TcpTransport=22430).
+[2017-10-31 01:01:59,889] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:01:59,889] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:01:59,890] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:01:59,891] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509426119.891336] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:01:59,986] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509426119.986235] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:02:00,004] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:06:19,062] da.api<MainProcess>:INFO: <Node_:1dc01> initialized at 127.0.0.1:(UdpTransport=28834, TcpTransport=19126).
+[2017-10-31 01:06:19,062] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:06:19,062] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:06:19,063] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:06:19,066] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509426379.0668118] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:06:19,067] bcr.Node_<Node_:1dc01>:ERROR: Unrecoverable error in node process: NameError("name 'Olympus' is not defined",)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/da/sim.py", line 977, in _delayed_start
+    return self.run()
+  File "src/bcr.py", line 57, in run
+    olympus = self.new(Olympus, args=('Olympus', replica_config.num_replica, replica_config.failures, replica_config.head_timeout, replica_config.nonhead_timeout))
+NameError: name 'Olympus' is not defined
+[2017-10-31 01:06:19,068] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:30:27,388] da.api<MainProcess>:INFO: <Node_:1dc01> initialized at 127.0.0.1:(UdpTransport=10948, TcpTransport=32182).
+[2017-10-31 01:30:27,388] da.api<MainProcess>:INFO: Starting program <module 'bcr' from 'src/bcr.py'>...
+[2017-10-31 01:30:27,388] da.api<MainProcess>:INFO: Running iteration 1 ...
+[2017-10-31 01:30:27,388] da.api<MainProcess>:INFO: Waiting for remaining child processes to terminate...(Press "Ctrl-C" to force kill)
+[2017-10-31 01:30:27,389] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509427827.389796] Running BCR simulation for test case: basic_pseudo_random_workload
+[2017-10-31 01:30:27,449] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.448948] replica failures: {}
+[2017-10-31 01:30:27,450] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.450582] Olympus created replica process: Replica 0
+[2017-10-31 01:30:27,451] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.4517398] Olympus created keys for replica process: Replica 0. Public key: b'36d719f7dce2d640b8e8225dc850ac960472c2def5e5998283e67bcbcc9ff814'
+[2017-10-31 01:30:27,468] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.468711] replica failures: {}
+[2017-10-31 01:30:27,470] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.470565] Olympus created replica process: Replica 1
+[2017-10-31 01:30:27,473] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.473351] Olympus created keys for replica process: Replica 1. Public key: b'83f71005fafd903f0d2e33cdabc943c7949ce457fdada53a66a1041e53280205'
+[2017-10-31 01:30:27,489] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.489803] replica failures: [shuttle(0,0), change_result()]
+[2017-10-31 01:30:27,491] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.491617] Olympus created replica process: Replica 2
+[2017-10-31 01:30:27,492] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.492769] Olympus created keys for replica process: Replica 2. Public key: b'5eab025e9038d758c6c5cee23a8f1ff1faebc565aa049e9a9c0497fac22aa7bf'
+[2017-10-31 01:30:27,495] bcr.Node_<Node_:1dc01>:OUTPUT: [Main][TS: 1509427827.4949481] Workload for client 0 : [('get', ['horror']), ('append', ['movie', ' wars']), ('get', ['movie'])]
+[2017-10-31 01:30:27,501] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.5010428] Head received replica references and public keys from Olympus
+[2017-10-31 01:30:27,501] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.501131] Replica 1 received replica references and public keys from Olympus
+[2017-10-31 01:30:27,502] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.5022552] Tail received replica references and public keys from Olympus
+[2017-10-31 01:30:27,502] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.502924] Replica 1 has receives its private key from Olympus.
+[2017-10-31 01:30:27,502] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.502917] Head has receives its private key from Olympus.
+[2017-10-31 01:30:27,503] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.503788] ACK from Head.
+[2017-10-31 01:30:27,503] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.503828] Tail has receives its private key from Olympus.
+[2017-10-31 01:30:27,504] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.5047889] ACK from Replica 1.
+[2017-10-31 01:30:27,505] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.505663] ACK from Tail.
+[2017-10-31 01:30:27,506] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.5061572] ACK from Replica 1.
+[2017-10-31 01:30:27,506] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.506654] ACK from Head.
+[2017-10-31 01:30:27,507] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.507095] ACK from Tail.
+[2017-10-31 01:30:27,516] da.api<MainProcess>:INFO: Main process terminated.
+[2017-10-31 01:30:27,517] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.517327] Received public key: b'c1797e8eba0500bed1ca79b1a00f900cbe0f61f688199a1b778e08f2eb4ad5ea' from client: Client 0
+[2017-10-31 01:30:27,517] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.5175848] Head has received client public key: b'c1797e8eba0500bed1ca79b1a00f900cbe0f61f688199a1b778e08f2eb4ad5ea' for client 0
+[2017-10-31 01:30:27,517] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.5177422] Replica 1 has received client public key: b'c1797e8eba0500bed1ca79b1a00f900cbe0f61f688199a1b778e08f2eb4ad5ea' for client 0
+[2017-10-31 01:30:27,517] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.5176342] Client 0 is configured.
+[2017-10-31 01:30:27,518] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.518034] Configuration sent to Client 0.
+[2017-10-31 01:30:27,519] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.51915] ACK from Head.
+[2017-10-31 01:30:27,519] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.519491] Tail has received client public key: b'c1797e8eba0500bed1ca79b1a00f900cbe0f61f688199a1b778e08f2eb4ad5ea' for client 0
+[2017-10-31 01:30:27,519] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.519857] ACK from Replica 1.
+[2017-10-31 01:30:27,520] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.5200179] Received the public keys of replicas from Olympus
+[2017-10-31 01:30:27,520] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.520075] get request with request id 0 received by Head.
+[2017-10-31 01:30:27,520] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.520556] ACK from Client 0.
+[2017-10-31 01:30:27,520] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.520683] Received the public key of Olympus.
+[2017-10-31 01:30:27,520] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.5207958] Head is in ACTIVE state.
+[2017-10-31 01:30:27,521] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.521489] ACK from Tail.
+[2017-10-31 01:30:27,522] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.522274] ACK from Client 0.
+[2017-10-31 01:30:27,522] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.522805] get request with request id 0 received by Replica 1.
+[2017-10-31 01:30:27,523] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.523201] Replica 1 is in ACTIVE state.
+[2017-10-31 01:30:27,525] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.525026] get request with request id 0 received by Tail.
+[2017-10-31 01:30:27,525] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.52553] Tail is in ACTIVE state.
+[2017-10-31 01:30:27,526] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.526189] Replica Tail: Trigger shuttle failure for client_id: 0 and message count: 0, scenario: shuttle(0,0), change_result()
+[2017-10-31 01:30:27,528] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.528036] Result shuttle sent by Replica 2 is not valid.
+[2017-10-31 01:30:27,528] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.528142] Number of correct result proofs received :2, required majority: 2
+[2017-10-31 01:30:27,528] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.5285828] Valid result:  received for request id: 0
+[2017-10-31 01:30:27,529] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.5289862] Misbehaviour detected in request id: 0! Sending reconfiguration request to Olympus
+[2017-10-31 01:30:27,529] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.529079] Reconfiguration request received from Tail.
+[2017-10-31 01:30:27,529] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.529511] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:27,530] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.5301929] Reconfiguration request received from Client 0.
+[2017-10-31 01:30:27,530] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.530515] append request with request id 1 received by Head.
+[2017-10-31 01:30:27,530] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.53059] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:27,531] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.531022] Head is in ACTIVE state.
+[2017-10-31 01:30:27,532] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.532435] append request with request id 1 received by Replica 1.
+[2017-10-31 01:30:27,532] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.532937] Replica 1 is in ACTIVE state.
+[2017-10-31 01:30:27,534] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.534407] append request with request id 1 received by Tail.
+[2017-10-31 01:30:27,534] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.534875] Tail is in ACTIVE state.
+[2017-10-31 01:30:27,537] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.537299] Result shuttle sent by Replica 2 is not valid.
+[2017-10-31 01:30:27,537] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.5370848] Number of correct result proofs received :2, required majority: 2
+[2017-10-31 01:30:27,537] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.537813] Valid result: fail received for request id: 1
+[2017-10-31 01:30:27,538] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.5382771] Reconfiguration request received from Tail.
+[2017-10-31 01:30:27,538] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.5383098] Misbehaviour detected in request id: 1! Sending reconfiguration request to Olympus
+[2017-10-31 01:30:27,538] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.538653] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:27,540] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.5405738] get request with request id 2 received by Head.
+[2017-10-31 01:30:27,539] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.539627] Reconfiguration request received from Client 0.
+[2017-10-31 01:30:27,558] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427827.558945] Head is in ACTIVE state.
+[2017-10-31 01:30:27,559] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.5590022] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:27,560] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.560469] get request with request id 2 received by Replica 1.
+[2017-10-31 01:30:27,560] replica.Replica<Replica:6f804>:OUTPUT: [Replica 1][TS: 1509427827.560871] Replica 1 is in ACTIVE state.
+[2017-10-31 01:30:27,562] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.5622358] get request with request id 2 received by Tail.
+[2017-10-31 01:30:27,562] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.5626419] Tail is in ACTIVE state.
+[2017-10-31 01:30:27,564] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.564388] Number of correct result proofs received :2, required majority: 2
+[2017-10-31 01:30:27,564] replica.Replica<Replica:6f805>:OUTPUT: [Tail][TS: 1509427827.564638] Result shuttle sent by Replica 2 is not valid.
+[2017-10-31 01:30:27,564] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.564817] Valid result:  received for request id: 2
+[2017-10-31 01:30:27,565] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.565151] Misbehaviour detected in request id: 2! Sending reconfiguration request to Olympus
+[2017-10-31 01:30:27,565] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.565504] Reconfiguration request received from Tail.
+[2017-10-31 01:30:27,565] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.565946] Local running state of client after the given set of operations: {}.
+[2017-10-31 01:30:27,565] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.56594] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:27,566] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.566294] Running state of client at the server (assuming no conflicting keys from other clients) after the given set of operations: {}.
+[2017-10-31 01:30:27,566] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.566536] Reconfiguration request received from Client 0.
+[2017-10-31 01:30:27,566] client.Client<Client:6f803>:OUTPUT: [Client 0][TS: 1509427827.566616] 
 
 Test case passed! Actual and expected running states match.
 
 
-[2017-10-22 23:40:02,140] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.1403468] Reconfiguration request received from Client 0.
-[2017-10-22 23:40:02,140] bcr.Olympus<Olympus:67c02>:OUTPUT: [Olympus][TS: 1508730002.140668] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:27,566] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427827.56689] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:30,560] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427830.560779] Head has timed out while waiting for result shuttle for request id 2. Sending reconfiguration request to Olympus
+[2017-10-31 01:30:30,561] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427830.5618691] Head has timed out while waiting for result shuttle for request id 1. Sending reconfiguration request to Olympus
+[2017-10-31 01:30:30,562] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.562378] Reconfiguration request received from Head.
+[2017-10-31 01:30:30,562] replica.Replica<Replica:6f803>:OUTPUT: [Head][TS: 1509427830.562933] Head has timed out while waiting for result shuttle for request id 0. Sending reconfiguration request to Olympus
+[2017-10-31 01:30:30,562] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.5629508] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:30,564] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.564536] Reconfiguration request received from Head.
+[2017-10-31 01:30:30,565] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.565449] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:30,566] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.566226] Reconfiguration request received from Replica 1.
+[2017-10-31 01:30:30,566] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.56671] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:30,567] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.5670998] Reconfiguration request received from Replica 1.
+[2017-10-31 01:30:30,567] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.567383] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:30,567] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.567724] Reconfiguration request received from Head.
+[2017-10-31 01:30:30,568] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.568128] No reconfiguration mechanism implemented yet.
+[2017-10-31 01:30:30,568] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.5685902] Reconfiguration request received from Replica 1.
+[2017-10-31 01:30:30,568] olympus.Olympus<Olympus:6f802>:OUTPUT: [Olympus][TS: 1509427830.5689018] No reconfiguration mechanism implemented yet.

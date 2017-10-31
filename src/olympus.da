@@ -1,0 +1,102 @@
+from nacl.hash import sha256
+from nacl.encoding import HexEncoder
+from nacl.signing import SigningKey, VerifyKey
+from nacl.exceptions import BadSignatureError
+
+# import for deserialization of message objects
+from ast import literal_eval
+replica_module = import_da('replica')
+from time import time
+from config import *
+import read_config
+
+# The Olympus process. It creates replicas, and co-ordinates the passing of public keys to and from clients and replicas
+# It also handles system reconfiguration, which is not implemented yet
+class Olympus(process):
+    # Olympus setup method. It receives config information, and passes it to applicable replicas
+    def setup(name, num_replicas, all_replica_conf_failures, head_timeout, replica_timeout):
+        self.replicas = list()
+        self.replica_private_keys = list()
+        self.replica_public_keys = list()
+        self.head = None
+        self.tail = None
+        # generate own keys
+        self.private_key = SigningKey.generate()
+        self.public_key = self.private_key.verify_key.encode(encoder=HexEncoder)
+        self.configuration_number = 0  # default configuration for phase 2
+        self.client_keys = {}  # client keys will be obtained later in message passing
+        # get all replica failures in current configuration
+        all_replica_failures = all_replica_conf_failures.get(self.configuration_number, {})
+        for i in range(num_replicas):
+            # get all failure scenarios in current replica
+            replica_failures = all_replica_failures.get(i, {})
+            if i == 0:
+                # create head replica
+                replica = new(replica_module.Replica, args=(i, 'Head', replica_failures, head_timeout, public_key))
+                self.head = replica
+            elif i == num_replicas - 1:
+                # create tail replica
+                replica = new(replica_module.Replica, args=(i, 'Tail', replica_failures, replica_timeout, public_key))
+                self.tail = replica
+            else:
+                # create other replica
+                replica = new(replica_module.Replica, args=(i, 'Replica ' + str(i), replica_failures, replica_timeout, public_key))
+            self.replicas.append(replica)
+            replica_name = 'Replica ' + str(i)
+            output_wrapper('Olympus created replica process: {}'.format(replica_name))
+            signing_key = SigningKey.generate()
+            verify_key = signing_key.verify_key.encode(encoder=HexEncoder)
+            output_wrapper(
+                'Olympus created keys for replica process: {}. Public key: {}'.format(replica_name, str(verify_key)))
+            self.replica_private_keys.append(signing_key)
+            self.replica_public_keys.append(verify_key)
+
+    # ACK message from client/replica
+    def receive(msg=('ACK', sender)):
+        output_wrapper('ACK from ' + str(sender) + '.')
+
+    # Get configuration message handler from client in which client passes its own reference and key
+    # Pass required information to all replicas and reply to client with current configuration details (replicas, head)
+    def receive(msg=('Get_configuration', client, client_name, client_id, client_public_key)):
+        client_keys[client_id] = VerifyKey(client_public_key, encoder=HexEncoder)
+        send(('Configuration', replicas, head), to=client)
+        send(('Keys', replica_public_keys, public_key), to=client)
+        send(('Client_keys', client_id, client_public_key), to=replicas)
+        output_wrapper('Received public key: {} from client: {}'.format(str(client_public_key), str(client_name)))
+        output_wrapper('Configuration sent to ' + str(client_name) + '.')
+
+    # Reconfiguration request. This may come from a client or a replica. Client sends proof of misbehavior, replica doesn't.
+    # This is not implemented in Phase 2. Will be done in Phase 3.
+    def receive(msg=('Reconfiguration', sender, proof_of_misbehavior)):
+        output_wrapper('Reconfiguration request received from ' + str(sender) + '.')
+        output_wrapper('No reconfiguration mechanism implemented yet.')
+        # Reconfigure and send new configuration to client and replicas
+
+    # Encrypt data with own private key and send
+    def sign_and_send(data, to_):
+        data = list(data)
+        data[-1] = private_key.sign(str(data[-1]).encode('utf-8'))
+        send(tuple(data), to=to_)
+
+    # Verify and unpack data with someone else's public key
+    def verify_data_with_key(data, pub_key):
+        try:
+            pub_key.verify(data)
+            return literal_eval(data.message.decode('utf-8'))
+        except BadSignatureError:
+            return None
+
+    # Run loop. Won't exit till Shutdown is received (never).
+    # Start replicas and send them initial configuration message
+    def run():
+        start(replicas)
+        sign_and_send(('Configuration', self, replicas, head, tail, [replica_public_keys, configuration_number]),
+                      replicas)
+        for i in range(len(replicas)):
+            send(('Key', replica_private_keys[i]), to=replicas[i])
+        await(received(('ACK', None)))
+        await(received(('Shutdown')))
+
+    # Utility method for logging, prepends process name and time to each log statement
+    def output_wrapper(log):
+        output('[{}][TS: {}]'.format(name, str(time())), log)
