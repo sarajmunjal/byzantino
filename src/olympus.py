@@ -2,11 +2,11 @@
 import da
 PatternExpr_413 = da.pat.TuplePattern([da.pat.ConstantPattern('ACK'), da.pat.FreePattern('sender')])
 PatternExpr_432 = da.pat.TuplePattern([da.pat.ConstantPattern('Get_configuration'), da.pat.FreePattern('client'), da.pat.FreePattern('client_name'), da.pat.FreePattern('client_id'), da.pat.FreePattern('client_public_key')])
-PatternExpr_498 = da.pat.TuplePattern([da.pat.ConstantPattern('Reconfiguration'), da.pat.FreePattern('sender'), da.pat.FreePattern('proof_of_misbehavior')])
-PatternExpr_614 = da.pat.TuplePattern([da.pat.ConstantPattern('ACK'), da.pat.ConstantPattern(None)])
-PatternExpr_637 = da.pat.ConstantPattern('Shutdown')
-PatternExpr_621 = da.pat.TuplePattern([da.pat.FreePattern(None), da.pat.TuplePattern([da.pat.FreePattern(None), da.pat.FreePattern(None), da.pat.FreePattern(None)]), da.pat.TuplePattern([da.pat.ConstantPattern('ACK'), da.pat.ConstantPattern(None)])])
-PatternExpr_641 = da.pat.TuplePattern([da.pat.FreePattern(None), da.pat.TuplePattern([da.pat.FreePattern(None), da.pat.FreePattern(None), da.pat.FreePattern(None)]), da.pat.ConstantPattern('Shutdown')])
+PatternExpr_508 = da.pat.TuplePattern([da.pat.ConstantPattern('Reconfiguration'), da.pat.FreePattern('sender'), da.pat.FreePattern('proof_of_misbehavior')])
+PatternExpr_624 = da.pat.TuplePattern([da.pat.ConstantPattern('ACK'), da.pat.ConstantPattern(None)])
+PatternExpr_647 = da.pat.ConstantPattern('Shutdown')
+PatternExpr_631 = da.pat.TuplePattern([da.pat.FreePattern(None), da.pat.TuplePattern([da.pat.FreePattern(None), da.pat.FreePattern(None), da.pat.FreePattern(None)]), da.pat.TuplePattern([da.pat.ConstantPattern('ACK'), da.pat.ConstantPattern(None)])])
+PatternExpr_651 = da.pat.TuplePattern([da.pat.FreePattern(None), da.pat.TuplePattern([da.pat.FreePattern(None), da.pat.FreePattern(None), da.pat.FreePattern(None)]), da.pat.ConstantPattern('Shutdown')])
 _config_object = {}
 from nacl.hash import sha256
 from nacl.encoding import HexEncoder
@@ -24,10 +24,10 @@ class Olympus(da.DistProcess):
         super().__init__(procimpl, props)
         self._OlympusReceivedEvent_3 = []
         self._OlympusReceivedEvent_4 = []
-        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_0', PatternExpr_413, sources=None, destinations=None, timestamps=None, record_history=None, handlers=[self._Olympus_handler_412]), da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_1', PatternExpr_432, sources=None, destinations=None, timestamps=None, record_history=None, handlers=[self._Olympus_handler_431]), da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_2', PatternExpr_498, sources=None, destinations=None, timestamps=None, record_history=None, handlers=[self._Olympus_handler_497]), da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_3', PatternExpr_614, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_4', PatternExpr_637, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[])])
+        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_0', PatternExpr_413, sources=None, destinations=None, timestamps=None, record_history=None, handlers=[self._Olympus_handler_412]), da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_1', PatternExpr_432, sources=None, destinations=None, timestamps=None, record_history=None, handlers=[self._Olympus_handler_431]), da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_2', PatternExpr_508, sources=None, destinations=None, timestamps=None, record_history=None, handlers=[self._Olympus_handler_507]), da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_3', PatternExpr_624, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_OlympusReceivedEvent_4', PatternExpr_647, sources=None, destinations=None, timestamps=None, record_history=True, handlers=[])])
 
-    def setup(self, name, num_replicas, all_replica_conf_failures, head_timeout, replica_timeout, **rest_663):
-        super().setup(name=name, num_replicas=num_replicas, all_replica_conf_failures=all_replica_conf_failures, head_timeout=head_timeout, replica_timeout=replica_timeout, **rest_663)
+    def setup(self, name, num_replicas, all_replica_conf_failures, head_timeout, replica_timeout, **rest_673):
+        super().setup(name=name, num_replicas=num_replicas, all_replica_conf_failures=all_replica_conf_failures, head_timeout=head_timeout, replica_timeout=replica_timeout, **rest_673)
         self._state.name = name
         self._state.num_replicas = num_replicas
         self._state.all_replica_conf_failures = all_replica_conf_failures
@@ -67,24 +67,24 @@ class Olympus(da.DistProcess):
             self._start(r)
             self.sign_and_send(('Configuration', self._id, self._state.replicas, self._state.head, self._state.tail, [self._state.replica_public_keys, self._state.configuration_number]), r)
             self.send(('Key', self._state.replica_private_keys[i]), to=r)
-        super()._label('_st_label_611', block=False)
-        _st_label_611 = 0
-        while (_st_label_611 == 0):
-            _st_label_611 += 1
-            if PatternExpr_621.match_iter(self._OlympusReceivedEvent_3, SELF_ID=self._id):
-                _st_label_611 += 1
+        super()._label('_st_label_621', block=False)
+        _st_label_621 = 0
+        while (_st_label_621 == 0):
+            _st_label_621 += 1
+            if PatternExpr_631.match_iter(self._OlympusReceivedEvent_3, SELF_ID=self._id):
+                _st_label_621 += 1
             else:
-                super()._label('_st_label_611', block=True)
-                _st_label_611 -= 1
-        super()._label('_st_label_634', block=False)
-        _st_label_634 = 0
-        while (_st_label_634 == 0):
-            _st_label_634 += 1
-            if PatternExpr_641.match_iter(self._OlympusReceivedEvent_4, SELF_ID=self._id):
-                _st_label_634 += 1
+                super()._label('_st_label_621', block=True)
+                _st_label_621 -= 1
+        super()._label('_st_label_644', block=False)
+        _st_label_644 = 0
+        while (_st_label_644 == 0):
+            _st_label_644 += 1
+            if PatternExpr_651.match_iter(self._OlympusReceivedEvent_4, SELF_ID=self._id):
+                _st_label_644 += 1
             else:
-                super()._label('_st_label_634', block=True)
-                _st_label_634 -= 1
+                super()._label('_st_label_644', block=True)
+                _st_label_644 -= 1
 
     def sign_and_send(self, data, to_):
         data = list(data)
@@ -110,14 +110,15 @@ class Olympus(da.DistProcess):
         self._state.client_keys[client_id] = VerifyKey(client_public_key, encoder=HexEncoder)
         self.send(('Configuration', self._state.replicas, self._state.head), to=client)
         self.send(('Keys', self._state.replica_public_keys, self._state.public_key), to=client)
-        self.send(('Client_keys', client_id, client_public_key), to=self._state.replicas)
+        for (i, r) in self._state.replicas.items():
+            self.send(('Client_keys', client_id, client_public_key), to=r)
         self.output_wrapper('Received public key: {} from client: {}'.format(str(client_public_key), str(client_name)))
         self.output_wrapper((('Configuration sent to ' + str(client_name)) + '.'))
     _Olympus_handler_431._labels = None
     _Olympus_handler_431._notlabels = None
 
-    def _Olympus_handler_497(self, sender, proof_of_misbehavior):
+    def _Olympus_handler_507(self, sender, proof_of_misbehavior):
         self.output_wrapper((('Reconfiguration request received from ' + str(sender)) + '.'))
         self.output_wrapper('No reconfiguration mechanism implemented yet.')
-    _Olympus_handler_497._labels = None
-    _Olympus_handler_497._notlabels = None
+    _Olympus_handler_507._labels = None
+    _Olympus_handler_507._notlabels = None

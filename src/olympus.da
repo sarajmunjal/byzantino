@@ -61,7 +61,8 @@ class Olympus(process):
         client_keys[client_id] = VerifyKey(client_public_key, encoder=HexEncoder)
         send(('Configuration', replicas, head), to=client)
         send(('Keys', replica_public_keys, public_key), to=client)
-        send(('Client_keys', client_id, client_public_key), to=replicas)
+        for i, r in replicas.items():
+            send(('Client_keys', client_id, client_public_key), to=r)
         output_wrapper('Received public key: {} from client: {}'.format(str(client_public_key), str(client_name)))
         output_wrapper('Configuration sent to ' + str(client_name) + '.')
 

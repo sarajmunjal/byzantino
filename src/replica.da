@@ -114,7 +114,6 @@ class Replica(process):
                         name, client_id, messages_received_from_client[client_id], pending_failures));
 
             messages_received_from_client[client_id] += 1
-
             # Verification of digital signature of client
             args = verify_data_with_key(args, client_keys[client_id])
             if args == None:
@@ -125,7 +124,7 @@ class Replica(process):
                 sign_and_send(('Operation_result', result_cache[request_id]), client)
                 output_wrapper('Result sent from cache of ' + name + '.')
                 return
-            elif self != head:
+            elif self not in head:
                 sign_and_send(('Request', type, self, client, request_id, client_id, args), head)
                 if await(received(('Result_shuttle_' + str(request_id)))):
                     pass
@@ -139,7 +138,7 @@ class Replica(process):
                 output_wrapper('Verification of message sent by Replica ' + str(sender_id) + ' has failed.')
                 return
 
-        if self == head:
+        if self in head:
             if request_from != client:
                 # forwarded_request failure trigger
                 if client_id not in messages_forwarded_request:
@@ -175,9 +174,8 @@ class Replica(process):
             order_proof = [slot_number, (type, args), configuration, order_stmt]
             result_proof = [[(type, args), calculate_hash(result)]]  # add result stmt
             shuttle = (order_proof, result_proof)
-
             # sign and send the shuttle (request shuttle) to the next replica in chain
-            sign_and_send(('Request', type, self, client, request_id, client_id, shuttle), replicas[id + 1])
+            sign_and_send(('Request', type, self, client, request_id, client_id, shuttle), replicas.get(id + 1))
             last_slot_number = slot_number
             if await(received(('Result_shuttle_' + str(request_id)))):
                 pass
@@ -202,7 +200,6 @@ class Replica(process):
                     'Replica {}: Trigger shuttle failure for client_id: {} and message count: {}, scenario: {}'.format(
                         name, client_id, messages_shuttle[client_id], scenario));
             messages_shuttle[client_id] += 1
-
             # if the shuttle is invalid, trigger reconfiguration and return
             if not validate_shuttle(args):
                 output_wrapper(
@@ -231,7 +228,7 @@ class Replica(process):
             result_proof.append([(type, operation_args), calculate_hash(result)])  # append result stmt
             shuttle = (order_proof, result_proof)
             # if tail, send result to client. Else, forward result to next replica in chain.
-            if self == tail:
+            if self in tail:
                 result_shuttle = [result, result_proof]
                 if FailureActionType.change_result in pending_failures and pending_failures[
                     FailureActionType.change_result] == 1:
@@ -253,7 +250,7 @@ class Replica(process):
                 # The tail sends a result_shuttle message to itself to initiate the result shuttle handler train
                 sign_and_send(('Result_shuttle', self, request_id, client_id, result_shuttle), tail)
             else:
-                sign_and_send(('Request', type, self, client, request_id, client_id, shuttle), replicas[id + 1])
+                sign_and_send(('Request', type, self, client, request_id, client_id, shuttle), replicas.get(id + 1))
                 if await(received(('Result_shuttle_' + str(request_id)))):
                     pass
                 elif timeout(replica_timeout):
@@ -287,7 +284,7 @@ class Replica(process):
 
         if validate_result_shuttle(result_shuttle):
             result_cache[request_id] = result_shuttle
-            if self != head:
+            if self not in head:
                 if FailureActionType.change_result in pending_failures and pending_failures[FailureActionType.change_result] == 1:
                     output_wrapper('Executing failure scenario: {}'.format(
                         str(pending_failure_scenarios[FailureActionType.change_result])))
@@ -303,8 +300,8 @@ class Replica(process):
                     result_shuttle = [result_t, result_shuttle[1][1:]]
                     pending_failures[FailureActionType.drop_result_stmt] = 0
                     pending_failure_scenarios[FailureActionType.drop_result_stmt] = None
-                sign_and_send(('Result_shuttle', self, request_id, client_id, result_shuttle), replicas[id - 1])
-                send(('Result_shuttle_' + str(request_id)), to=replicas[id - 1])
+                sign_and_send(('Result_shuttle', self, request_id, client_id, result_shuttle), replicas.get(id - 1))
+                send(('Result_shuttle_' + str(request_id)), to=replicas.get(id - 1))
             output_wrapper('Result shuttle is at ' + str(name) + '.')
         else:
             output_wrapper('Result shuttle sent by Replica ' + str(sender_id) + ' is not valid.')
