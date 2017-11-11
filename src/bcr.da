@@ -19,7 +19,7 @@ from time import time
 
 # Configure a reliable FIFO channel
 config(channel={'reliable', 'fifo'})
-
+config(clock='Lamport')
 # Utility method for parsing program arguments
 def parse_program_args(argv):
     inputfile = ''
@@ -64,7 +64,7 @@ def main():
 
     output_wrapper('Running BCR simulation for test case: ' + global_config.test_case_name)
     olympus = new(olympus_module.Olympus, args=(
-        'Olympus', replica_config.num_replica, replica_config.failures, replica_config.head_timeout,
+        'Olympus', replica_config.num_replica, replica_config.num_failures, replica_config.failures, replica_config.head_timeout,
         replica_config.nonhead_timeout), at='Node1')
     start(olympus)
     clients = dict()

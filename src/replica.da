@@ -307,6 +307,21 @@ class Replica(process):
             output_wrapper('Result shuttle sent by Replica ' + str(sender_id) + ' is not valid.')
             send(('Reconfiguration', name, None), to=olympus)
 
+    # wedge statement received from olympus!
+    # TODO check that it is Olympus' public key!
+    def receive(msg=('wedge_request', source)):
+        status = 2 # IMMUTABLE
+        output_wrapper('Received wedge request from Olympus')
+        send(('wedge', [(1, 'op1'), (2,'op2')], ['checkpoint proof'], 'hash_running_state', self, time()), to= olympus)
+
+    # catch up statement received from olympus!
+    # TODO check that it is Olympus' public key!
+    def receive(msg=('catch_up', gap), from_=olympus):
+        hist_set = set(self.history)
+        hist_set += set(gap)
+        self.history = list(hist_set)
+        send(('caught_up', self, time()), to= olympus)
+
     # method to update running state in replica. It performs one out of 4 supported operations.
     def update_running_state(type, args):
         if type == 'put':
